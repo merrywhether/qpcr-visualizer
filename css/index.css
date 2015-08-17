@@ -1,0 +1,23 @@
+body {
+  font: 12px sans-serif;
+  background-color: lightgreen;
+}
+#grid,
+#chart,
+#details {
+  background-color: white;
+  width: 800px;
+  height: 300px;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#grid {
+  height: 400px;
+}
+#details {
+  height: 200px;
+  box-sizing: border-box;
+  padding: 50px;
+}

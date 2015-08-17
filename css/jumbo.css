@@ -1,0 +1,16 @@
+body {
+  font: 12px sans-serif;
+  background-color: lightgreen;
+}
+
+.container {
+  background-color: white;
+  width: 1000px;
+  border-radius: 25px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+h1 {
+  padding: 20px 0 0 0;
+}

@@ -1,0 +1,48 @@
+/* Suggested styles for the fluorescence detail table */
+
+.fluor-table {
+  border-collapse: collapse;
+}
+
+.fluor-table th,
+.fluor-table td {
+  width: 15px;
+  height: 50px;
+  position: relative;
+  border-right: 1px solid black;
+}
+
+.fluor-table th:last-child,
+.fluor-table td:last-child {
+  border-right: none;
+}
+
+.fluor-table thead th,
+.fluor-table thead td {
+  border-bottom: 1px solid black;
+}
+
+.above-threshold {
+  color: green;
+}
+
+.below-threshold {
+  color: red;
+}
+
+.fluor-detail {
+  -webkit-transform: rotate(-90deg);
+  -webkit-transform-origin: left top;
+  -moz-transform: rotate(-90deg);
+  -moz-transform-origin: left top;
+  -ms-transform: rotate(-90deg);
+  -ms-transform-origin: left top;
+  -o-transform: rotate(-90deg);
+  -o-transform-origin: left top;
+  transform: rotate(-90deg);
+  transform-origin: left top;
+
+  position: absolute;
+  top: 90%;
+  left: 0;
+}

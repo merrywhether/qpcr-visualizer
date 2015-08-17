@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>qPCR Visualizer - Dashboard layout</title>
+  <link rel="stylesheet" href="src/qpcr-table.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <h1>qPCR Data Dashboard - Fluorescence vs Cycle by Sample</h1>
+  <div class="grouping">
+    <div id="chart"></div><div id="grid"></div>
+  </div>
+  <div id="details"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="src/qpcr-visualizer.js"></script>
+  <script>
+    var qpcr = QPCRVisualizer({
+      dataUri: 'data/qpcrGenData.json',
+      chart: {
+        el: '#chart',
+        grouping: 'none',
+        width: 400,
+        height: 300,
+        margins: {top: 10, right: 10, bottom: 20, left: 40},
+        labels: false,
+        colorset: 'c'
+      },
+      grid: {
+        el: '#grid',
+        width: 400,
+        height: 300,
+        margins: {top: 10, right: 10, bottom: 10, left: 10},
+      },
+      details: {
+        el: '#details'
+      }
+    });
+  </script>
+</body>
+</html>

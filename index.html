@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>qPCR Visualizer</title>
+  <link rel="stylesheet" href="src/qpcr-table.css">
+  <!-- <link rel="stylesheet" href="css/index.css"> -->
+</head>
+<body>
+  <h1>The qPCR Visualizer</h1>
+  <p>Below are the widgets loaded with their default settings (plus info boxes and threshold values turned on) and no additional styles (other than suggested table styling). There are also demonstration configs of the widgets:</p>
+  <ul>
+    <li><a href="dashboard.html">Tight dashboard</a></li>
+    <li><a href="jumbo.html">Jumbo chart</a></li>
+    <li><a href="grid.html">Grid and details only</a></li>
+  </ul>
+  <p>Fluorescence vs Cycles Graph:</p>
+  <div id="chart"></div>
+  <p>qPCR Tray Grid View:</p>
+  <div id="grid"></div>
+  <p>Fluorescence data detail table:</p>
+  <div id="details"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="src/qpcr-visualizer.js"></script>
+  <script>
+    var qpcr = QPCRVisualizer({
+      dataUri: 'data/qpcrGenData.json',
+      threshold: 400,
+      info: true,
+      chart: {
+        el: '#chart'
+      },
+      grid: {
+        el: '#grid'
+      },
+      details: {
+        el: '#details'
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>qPCR Visualizer</title>
+  <link rel="stylesheet" href="src/qpcr-table.css">
+  <link rel="stylesheet" href="css/jumbo.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Fluorescence vs Cycle for qPCR</h1>
+    <div id="chart"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="src/qpcr-visualizer.js"></script>
+  <script>
+    var qpcr = QPCRVisualizer({
+      dataUri: 'data/qpcrGenData.json',
+      threshold: 400,
+      info: true,
+      chart: {
+        el: '#chart',
+        height: 1000,
+        width: 1000
+      }
+    });
+  </script>
+</body>
+</html>
