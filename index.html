@@ -44,10 +44,10 @@
             The qPCR Visualizer is a JS library that allows you load large JSON datasets representing PCR
             trays and display them with your choice of a few modules based on your use case. The
             modules are largely configurable and allow for interaction between each other. Listed
-            below are the various modules in their default state (with no styling except for the
+            below are the various modules in their default states (with no styling except for the
             detail table module) with a basic description, and you can visit the
             <a class="blue-grey-text text-lighten-1" href="https://github.com/merrywhether/qpcr-visualizer">GitHub page</a> to get the code
-            and view more in-depth documentation, and be sure to check out the various example
+            and view more in-depth documentation. Be sure to check out the various example
             configurations for a sense of how this library can be used.
           </p>
         </div>
@@ -59,7 +59,7 @@
           <div class="section">
             <ul class="collapsible popout" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Chart Module</h5> <span class="right">expand for more info</span></div>
+                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Chart Module</h5> <span class="right blue-grey-text text-lighten-1">expand for more info</span></div>
                 <div class="collapsible-body">
                   <p>
                     The chart module shows a fluorescence vs cycle count graph for all sample cells. It can be configured
@@ -88,7 +88,7 @@
           <div class="section">
             <ul class="collapsible popout" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Grid Module</h5> <span class="right">expand for more info</span></div>
+                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Grid Module</h5> <span class="right blue-grey-text text-lighten-1">expand for more info</span></div>
                 <div class="collapsible-body">
                   <p>
                     The grid module shows all of the sample cells from the qPCR tray. It can be configured with
@@ -116,7 +116,7 @@
           <div class="section">
             <ul class="collapsible popout" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Detail Module</h5> <span class="right">expand for more info</span></div>
+                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Detail Module</h5> <span class="right blue-grey-text text-lighten-1">expand for more info</span></div>
                 <div class="collapsible-body">
                   <p>
                     The detail module shows the fluorescence data for a specific cell. It's only configuration
@@ -150,7 +150,7 @@
               There are a few options that are configured at the global level:
               <ul class="collection">
                 <li class="collection-item">URI of the target JSON data</li>
-                <li class="collection-item">Options for parsing the passed in JSON object (such as a key regex and data point names)</li>
+                <li class="collection-item">Options for parsing the passed-in JSON object (such as a key regex and data point names)</li>
                 <li class="collection-item">Info box presence</li>
                 <li class="collection-item">Fluorescence threshold behavior</li>
               </ul>
@@ -163,11 +163,11 @@
         <div class="col s10 offset-s1">
           <div class="divider brown lighten-1"></div>
           <div class="section">
-            <h4 class="brown-text text-darken-3">Example configurations (with fake page chrome)</h4>
+            <h4 class="brown-text text-darken-3">Example configurations (inset in fake pages)</h4>
             <div class="collection">
-              <a href="dashboard.html" class="collection-item brown-text text-darken-3">Tight dashboard</a>
-              <a href="jumbo.html" class="collection-item brown-text text-darken-3">Jumbo chart</a>
-              <a href="grid.html" class="collection-item brown-text text-darken-3">Grid and details only</a>
+              <a href="dashboard.html" class="collection-item blue-grey-text text-lighten-1">Tight dashboard</a>
+              <a href="jumbo.html" class="collection-item blue-grey-text text-lighten-1">Jumbo chart</a>
+              <a href="grid.html" class="collection-item blue-grey-text text-lighten-1">Grid and details only</a>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@
               There are a couple of features I'd like to implement in the future:
               <ul class="collection">
                 <li class="collection-item">Better mobile-friendliness and responsiveness</li>
-                <li class="collection-item">Research mode toggle for grid - would allow selection and focus-locking of random selection of cells</li>
+                <li class="collection-item">Research mode toggle for grid (would allow selection and focus-locking of random selection of cells)</li>
                 <li class="collection-item">Dynamically change grouping mode for coloring graph</li>
                 <li class="collection-item">Dynamically change dataset</li>
                 <li class="collection-item">Dynamically expand details table to show data for multiple cells at once</li>
