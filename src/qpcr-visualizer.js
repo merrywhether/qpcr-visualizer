@@ -234,6 +234,7 @@ var QPCRVisualizer = function(opts) {
     //create scales for x and y axes based on available space
     this.xScale = d3.scale.linear()
       .range([0, this.width - this.margins.right - this.margins.left]);
+
     this.yScale = d3.scale.linear()
       .range([this.height - this.margins.top - this.margins.bottom, 0]);
 
@@ -278,10 +279,12 @@ var QPCRVisualizer = function(opts) {
         .attr('class', 'x-axis axis')
         .attr('transform', 'translate(' + [0, (this.height - this.margins.top - this.margins.bottom)] + ')')
         .call(this.xAxis());
+
       xAxis.selectAll('path, line')
         .attr('stroke', 'black')
         .attr('fill', 'none')
         .attr('shape-rendering', 'crispEdges');
+
       if (this.labels) {
         xAxis.append('text')
           .attr('y', 15)
@@ -294,10 +297,12 @@ var QPCRVisualizer = function(opts) {
       var yAxis = this.svg.append('g')
         .attr('class', 'y-axis axis')
         .call(this.yAxis());
+
       yAxis.selectAll('path, line')
         .attr('stroke', 'black')
         .attr('fill', 'none')
         .attr('shape-rendering', 'crispEdges');
+
       if (this.labels) {
         yAxis.append('text')
           .attr('transform', 'rotate(-90)')
@@ -372,7 +377,6 @@ var QPCRVisualizer = function(opts) {
   };
 
   var QPCRGrid = function(control, opts) {
-    //module settings
     this.control = control;
     this.el = opts.el;
     this.width = opts.width || 700;
@@ -413,6 +417,7 @@ var QPCRVisualizer = function(opts) {
       var xScale = d3.scale.ordinal()
         .domain(d3.range(0, this.control.numCols+1))
         .rangePoints([0, this.width - this.margins.left - this.margins.right], 1);
+
       var yScale = d3.scale.ordinal()
         .domain(d3.range(0, this.control.numRows+1))
         .rangePoints([0, this.height - this.margins.top - this.margins.bottom], 1);
@@ -519,7 +524,6 @@ var QPCRVisualizer = function(opts) {
   };
 
   var QPCRDetails = function(control, opts) {
-    //sub-module settings
     this.control = control;
     this.el = opts.el;
 
@@ -534,10 +538,12 @@ var QPCRVisualizer = function(opts) {
       //create thead with th for cycle and td for all cycle numbers
       var tableHead = this.table.append('thead')
         .append('tr');
+
       tableHead.append('th')
         .append('span')
         .attr('class', 'fluor-detail')
         .text('Cycle');
+
       tableHead.selectAll('td')
         .data(d3.range(1, this.control.cycles+1))
         .enter()
@@ -547,11 +553,14 @@ var QPCRVisualizer = function(opts) {
         .text(function(d) { return d; });
 
       //create tbody with th for fluorescence and empty tds, saving for future reference
-      this.tableBody = this.table.append('tbody').append('tr');
+      this.tableBody = this.table.append('tbody')
+        .append('tr');
+
       this.tableBody.append('th')
         .append('span')
         .attr('class', 'fluor-detail')
         .text('Fluor');
+
       this.tableBody.selectAll('td')
         .data(d3.range(1, this.control.cycles+1))
         .enter()
