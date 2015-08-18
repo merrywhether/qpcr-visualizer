@@ -15,7 +15,7 @@ var QPCRVisualizer = function(opts) {
       if (this.chart) this.chart.addInfoBox();
       if (this.grid) this.grid.addInfoBox();
     }
-    
+
     this.cells = [];
     this.rows = [];
     this.cols = [];
@@ -254,7 +254,7 @@ var QPCRVisualizer = function(opts) {
         parent: this,
         title: 'Fluoroscence vs Cycle Graph',
         content: 'This chart shows the fluorescence correlated to the cycle count for each of the samples in the qPCR tray.'
-          + (this.control.threshold ? ' The threshold value is plotted horizontally for reference, and the line can be hovered on to see the threhold value.' : '')
+          + (this.control.threshold ? ' The threshold value is plotted horizontally for reference, and the line can be hovered on to see the threshold value.' : '')
           + (this.control.grid ? ' Elements that are not currently in focus on the grid will be mostly transparent.' : ''),
         width: 300
       });
