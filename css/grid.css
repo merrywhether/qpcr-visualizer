@@ -1,17 +1,5 @@
-body {
-  font: 12px sans-serif;
-  background-color: lightyellow;
-}
-
-h1 {
-  text-align: center;
-  margin: 0;
-  padding-top: 20px;
-}
-
 #grid,
-#details,
-h1 {
+#details {
   background-color: white;
   width: 800px;
   margin-right: auto;

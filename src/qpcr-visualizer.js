@@ -15,6 +15,7 @@ var QPCRVisualizer = function(opts) {
       if (this.chart) this.chart.addInfoBox();
       if (this.grid) this.grid.addInfoBox();
     }
+    
     this.cells = [];
     this.rows = [];
     this.cols = [];
@@ -119,9 +120,11 @@ var QPCRVisualizer = function(opts) {
         .datum(infoBox.info)
         .append('g')
         .attr('transform', 'translate(' + [this.parent.width - this.parent.margins.right/2, this.parent.margins.top/2] + ')');
+
       info.append('circle')
         .attr('r', 10)
         .attr('fill', 'gainsboro ');
+
       info.append('text')
         .attr('text-anchor', 'middle')
         .attr('fill', 'black')
@@ -130,6 +133,7 @@ var QPCRVisualizer = function(opts) {
         .attr('font-weight', 'bold')
         .attr('y', 5)
         .text('i');
+
       info.call(infoBox.toolTip.register.bind(infoBox.toolTip));
     }
   };
@@ -204,7 +208,7 @@ var QPCRVisualizer = function(opts) {
   var QPCRChart = function(control, opts) {
     this.control = control;
     this.el = opts.el;
-    this.width = opts.width || 800;
+    this.width = opts.width || 700;
     this.height = opts.height || 300;
     this.margins = opts.margins || {top: 50, right: 50, bottom: 50, left: 50};
     this.grouping = opts.grouping || 'row';
@@ -250,7 +254,7 @@ var QPCRVisualizer = function(opts) {
         parent: this,
         title: 'Fluoroscence vs Cycle Graph',
         content: 'This chart shows the fluorescence correlated to the cycle count for each of the samples in the qPCR tray.'
-          + (this.control.threshold ? ' The threshold value is plotted horizontally for reference, and the lined can be hovered on to see the threhold value.' : '')
+          + (this.control.threshold ? ' The threshold value is plotted horizontally for reference, and the line can be hovered on to see the threhold value.' : '')
           + (this.control.grid ? ' Elements that are not currently in focus on the grid will be mostly transparent.' : ''),
         width: 300
       });
@@ -361,18 +365,17 @@ var QPCRVisualizer = function(opts) {
         .append('path')
         .attr('d', function(d) { return threshold(d); })
         .style('stroke', chart.control.thresholdColor)
-        .attr('stroke-width', '2px')
+        .attr('stroke-width', '3px')
         .attr('fill', 'none')
         .call(toolTip.register.bind(toolTip));
     }
   };
 
-
   var QPCRGrid = function(control, opts) {
     //module settings
     this.control = control;
     this.el = opts.el;
-    this.width = opts.width || 800;
+    this.width = opts.width || 700;
     this.height = opts.height || 400;
     this.margins = opts.margins || {top: 50, right: 50, bottom: 50, left: 50};
     this.radius = opts.radius;
@@ -400,7 +403,7 @@ var QPCRVisualizer = function(opts) {
         content: 'This grid shows all the cells in the qPCR tray, aligned by column and row. Rows, columns, and individual cells can be hovered over for more detail.'
           + (this.control.chart ? ' Hovered cells or groups will be emphasized in the graph.' : '')
           + (this.control.details ? ' Hovered cells will have their exact fluorescence values displayed in the accompanying flourescence data table.' : '')
-          + (this.control.details && this.control.threshold ? ' The fluorescence values will be color-coded to indicate whether they are above or beloew the indicated fluorescence threshold.' : ''),
+          + (this.control.details && this.control.threshold ? ' The fluorescence values will be color-coded to indicate whether they are above or below the indicated fluorescence threshold.' : ''),
         width: 350
       });
     },
@@ -519,7 +522,6 @@ var QPCRVisualizer = function(opts) {
     //sub-module settings
     this.control = control;
     this.el = opts.el;
-    this.threshold = opts.threshold;
 
     //create base svg object, exposing fluor-chart class
     this.table = d3.select(this.el)

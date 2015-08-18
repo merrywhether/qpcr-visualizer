@@ -2,14 +2,47 @@
 <html>
 <head>
   <title>qPCR Visualizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="src/qpcr-table.css">
   <link rel="stylesheet" href="css/grid.css">
 </head>
-<body>
-  <h1>qPCR Data Grid</h1>
-  <div id="grid"></div>
-  <div id="details"></div>
+<body class="blue-grey lighten-5">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a class="blue-grey-text" href="dashboard.html">Tight dashboard</a></li>
+    <li><a class="blue-grey-text" href="jumbo.html">Jumbo chart</a></li>
+    <li><a class="blue-grey-text" href="grid.html">Grid and details only</a></li>
+  </ul>
+  <nav class="blue-grey darken-4">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo blue-grey-text text-lighten-4">qPCR Visualizer</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="blue-grey-text text-lighten-4" href="index.html">Home</a></li>
+        <li><a class="blue-grey-text text-lighten-4" href="https://github.com/merrywhether/qpcr-visualizer">GitHub</a></li>
+        <li class="active"><a class="dropdown-button blue-grey-text text-lighten-4" href="#!" data-activates="dropdown1">Example Configs</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <div class="row"></div>
+
+  <div class="row white">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#">Run #117 Graph</a></li>
+        <li class="tab col s3"><a class="active" href="#">Run #117 Grid View</a></li>
+        <li class="tab col s3"><a href="#">Run #117 Dataset</a></li>
+        <li class="tab col s3"><a href="#">Run #117 Export</a></li>
+      </ul>
+    </div>
+    <div class="col s12">
+      <div id="grid"></div>
+      <div id="details"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   <script src="src/qpcr-visualizer.js"></script>
   <script>
@@ -17,6 +50,7 @@
       dataUri: 'data/qpcrGenData.json',
       grid: {
         el: '#grid',
+        width: 800,
         cellColor: 'lightgreen',
         cellHoverColor: 'green',
         groupTextColor: 'green',

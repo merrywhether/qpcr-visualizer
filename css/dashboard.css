@@ -1,27 +1,19 @@
-body {
-  font: 10px sans-serif;
-  background-color: gray;
-}
-
-h1 {
-  width: 804px;
-  text-align: center;
-  padding: 5px 0;
+.demo-col {
+  height: 600px;
 }
 
 .grouping,
 #details {
   width: 804px;
+  font: 10px sans-serif;
 }
 
 #chart,
 #grid,
-#details,
-h1 {
+#details {
   border: 1px solid gray;
   margin: 0;
   box-sizing: border-box;
-  background-color: white;
 }
 #chart,
 #grid {

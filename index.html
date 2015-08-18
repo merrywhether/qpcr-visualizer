@@ -2,24 +2,203 @@
 <html>
 <head>
   <title>qPCR Visualizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
   <link rel="stylesheet" href="src/qpcr-table.css">
-  <!-- <link rel="stylesheet" href="css/index.css"> -->
+  <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
-  <h1>The qPCR Visualizer</h1>
-  <p>Below are the widgets loaded with their default settings (plus info boxes and threshold values turned on) and no additional styles (other than suggested table styling). There are also demonstration configs of the widgets:</p>
-  <ul>
-    <li><a href="dashboard.html">Tight dashboard</a></li>
-    <li><a href="jumbo.html">Jumbo chart</a></li>
-    <li><a href="grid.html">Grid and details only</a></li>
+<body class="blue-grey darken-3">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a class="blue-grey-text" href="dashboard.html">Tight dashboard</a></li>
+    <li><a class="blue-grey-text" href="jumbo.html">Jumbo chart</a></li>
+    <li><a class="blue-grey-text" href="grid.html">Grid and details only</a></li>
   </ul>
-  <p>Fluorescence vs Cycles Graph:</p>
-  <div id="chart"></div>
-  <p>qPCR Tray Grid View:</p>
-  <div id="grid"></div>
-  <p>Fluorescence data detail table:</p>
-  <div id="details"></div>
+  <nav class="blue-grey darken-4">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo blue-grey-text text-lighten-4">qPCR Visualizer</a>
+      <ul class="right hide-on-med-and-down">
+        <li class="active"><a class="blue-grey-text text-lighten-4" href="index.html">Home</a></li>
+        <li><a class="blue-grey-text text-lighten-4" href="https://github.com/merrywhether/qpcr-visualizer">GitHub</a></li>
+        <li><a class="dropdown-button blue-grey-text text-lighten-4" href="#!" data-activates="dropdown1">Example Configs</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <div class="container blue-grey lighten-5">
+    <div class="row">
+      <div class="col s10 offset-s1">
+        <h1 class="brown-text text-darken-3">qPCR Visualizer</h1>
+        <h5 class="brown-text text-darken-3">A JS visualization library built on D3</h5>
+        <div class="divider brown lighten-1"></div>
+        <div class="section">
+          <p>
+            The qPCR Visualizer is a JS library that allows you load large JSON datasets representing PCR
+            trays and display them with your choice of a few modules based on your use case. The
+            modules are largely configurable and allow for interaction between each other. Listed
+            below are the various modules in their default state (with no styling except for the
+            detail table module) with a basic description, and you can visit the
+            <a class="blue-grey-text text-lighten-1" href="https://github.com/merrywhether/qpcr-visualizer">GitHub page</a> to get the code
+            and view more in-depth documentation, and be sure to check out the various example
+            configurations for a sense of how this library can be used.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <ul class="collapsible popout" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Graph Module</h5> <span class="right">expand for more info</span></div>
+                <div class="collapsible-body">
+                  <p>
+                    The graph module shows fluorescence vs cycle count for all sample cells. It can be configured
+                    to have an info box, a fluorescence threshold line, different color sets and grouping options
+                    within those sets, custom sizing, and axis labels. The only requirement is a container element.
+                    The graph interacts with the grid module to allow for highlighting of row or column groups
+                    as well as individual cells. It exposes the <code>fluor-chart</code> class on its top-level svg
+                    element.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div id="chart"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <ul class="collapsible popout" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Grid Module</h5> <span class="right">expand for more info</span></div>
+                <div class="collapsible-body">
+                  <p>
+                    The grid module shows all of the sample cells from the qPCR tray. It can be configured with
+                    an info box, custom sizing, and custom coloring for the cells and headers. The grid
+                    interacts with the graph to highlight hovered elements, and also interacts with the detail
+                    module to show the exact fluorescence values for a specified sample cell. It exposes the
+                    <code>fluor-grid</code> class on its top-level svg element.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div id="grid"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <ul class="collapsible popout" data-collapsible="accordion">
+              <li>
+                <div class="collapsible-header"><h5 class="brown-text text-darken-3 inline-header">Detail Module</h5> <span class="right">expand for more info</span></div>
+                <div class="collapsible-body">
+                  <p>
+                    The detail module shows the fluorescence data for a specific cell. It's only configuration
+                    option is the addition of a threshold concept, but it is html (not svg) and thus can be
+                    manipulated with styling. It exposes the <code>fluor-table</code> class on its top-level
+                    table element, as well as the <code>fluor-detail</code> class on its text-containing
+                    span elements. There is an example CSS file for styling the table in the
+                    <a class="blue-grey-text text-lighten-1" href="https://github.com/merrywhether/qpcr-visualizer/blob/master/src/qpcr-table.css">github repo</a>.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <div id="details"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <h4 class="brown-text text-darken-3">Global configuration options</h4>
+            <p>
+              There are a few options that are configured at the global level:
+              <ul class="collection">
+                <li class="collection-item">URI of the target JSON data</li>
+                <li class="collection-item">Options for parsing the passed in JSON object (such as a key regex and data point names)</li>
+                <li class="collection-item">Info box presence</li>
+                <li class="collection-item">Fluorescence threshold behavior</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <h4 class="brown-text text-darken-3">Example configurations (with fake page chrome)</h4>
+            <div class="collection">
+              <a href="dashboard.html" class="collection-item brown-text text-darken-3">Tight dashboard</a>
+              <a href="jumbo.html" class="collection-item brown-text text-darken-3">Jumbo chart</a>
+              <a href="grid.html" class="collection-item brown-text text-darken-3">Grid and details only</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <h4 class="brown-text text-darken-3">Future developments</h4>
+            <p>
+              There are a couple of features I'd like to implement in the future:
+              <ul class="collection">
+                <li class="collection-item">Better mobile-friendliness and responsiveness</li>
+                <li class="collection-item">Research mode toggle for grid - would allow selection and focus-locking of random selection of cells</li>
+                <li class="collection-item">Dynamically change grouping mode for coloring graph</li>
+                <li class="collection-item">Dynamically change dataset</li>
+                <li class="collection-item">Annotate data set with reagents and other notes and re-export</li>
+                <li class="collection-item">Toggle default inline styles on and off</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s10 offset-s1">
+          <div class="divider brown lighten-1"></div>
+          <div class="section">
+            <h4 class="brown-text text-darken-3">Documentation</h4>
+            <p>
+              Visit the <a class="blue-grey-text text-lighten-1" href="https://github.com/merrywhether/qpcr-visualizer">GitHub page</a>
+              for more documentation details.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   <script src="src/qpcr-visualizer.js"></script>
   <script>

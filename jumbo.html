@@ -2,16 +2,50 @@
 <html>
 <head>
   <title>qPCR Visualizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="src/qpcr-table.css">
   <link rel="stylesheet" href="css/jumbo.css">
 </head>
-<body>
+<body class="blue-grey lighten-5">
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a class="blue-grey-text" href="dashboard.html">Tight dashboard</a></li>
+    <li><a class="blue-grey-text" href="jumbo.html">Jumbo chart</a></li>
+    <li><a class="blue-grey-text" href="grid.html">Grid and details only</a></li>
+  </ul>
+  <nav class="blue-grey darken-4">
+    <div class="nav-wrapper container">
+      <a href="index.html" class="brand-logo blue-grey-text text-lighten-4">qPCR Visualizer</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="blue-grey-text text-lighten-4" href="index.html">Home</a></li>
+        <li><a class="blue-grey-text text-lighten-4" href="https://github.com/merrywhether/qpcr-visualizer">GitHub</a></li>
+        <li class="active"><a class="dropdown-button blue-grey-text text-lighten-4" href="#!" data-activates="dropdown1">Example Configs</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <div class="container">
-    <h1>Fluorescence vs Cycle for qPCR</h1>
+  <div class="row"></div>
+
+  <div class="row white demo">
+    <nav class="blue-grey darken-2">
+      <div class="nav-wrapper container">
+        <ul class="left">
+          <li><a class="blue-grey-text text-lighten-4" href="#!">Jumbo chart demo</a></li>
+          <li class="active"><a class="blue-grey-text text-lighten-4" href="#!">Latest run results</a></li>
+          <li><a class="blue-grey-text text-lighten-4" href="#!">View all run data</a></li>
+          <li><a class="blue-grey-text text-lighten-4" href="#!">Schedule another run</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <h5>qPCR Run #117 Data - Fluorescence vs Cycle by Sample</h5>
+
     <div id="chart"></div>
+
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   <script src="src/qpcr-visualizer.js"></script>
   <script>
@@ -21,8 +55,8 @@
       info: true,
       chart: {
         el: '#chart',
-        height: 1000,
-        width: 1000
+        height: 900,
+        width: 900
       }
     });
   </script>
